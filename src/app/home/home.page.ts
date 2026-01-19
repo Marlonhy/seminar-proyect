@@ -41,6 +41,7 @@ export class HomePage implements OnInit {
 
   async ngOnInit() {
     await this.loadStorageData();
+    this.simularCargaDatos();
   }
 
   async goBack() {
@@ -64,5 +65,19 @@ export class HomePage implements OnInit {
       this.textoActual = this.colorActual === this.colorOscuro ? this.colorClaro : this.colorOscuro;
       console.log('Tema cargado desde almacenamiento:', this.colorActual);
     }
+  }
+
+  async simularCargaDatos() {
+    const data = await this.obtenerDatosSimulados();
+    console.log("Datos simulados:", data);
+    }
+  
+  obtenerDatosSimulados() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(["Rock", "Jazz", "Pop"])
+        reject ("Error al cargar los datos");
+      }, 1500);
+    });
   }
 }
