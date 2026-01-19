@@ -14,7 +14,7 @@ describe('IntroGuard', () => {
     expect(guard).toBeTruthy();
   });
 
-  it('should allow activation', () => {
-    expect(guard.canActivate()).toBe(true);
+  it('should allow activation', async () => {
+    expect(await guard.canActivate()).toBe(true);
   });
 });
