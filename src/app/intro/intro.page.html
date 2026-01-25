@@ -1,12 +1,30 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>intro</ion-title>
+    <ion-title>
+      INTRO
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-      <ion-title size="large">Soy intro</ion-title>
-      <ion-button (click)="goBack()">
-        Volver a Home
-      </ion-button>
+  <swiper-container
+    #swiperRef
+    pagination="true"
+    slides-per-view="1"
+    (swiperswiper)="initSwiper()"
+    [style.background-color]="colorActual"
+    [style.color]="textoActual"
+    >
+    <swiper-slide *ngFor="let onboarding of onboardings">
+      <div class="slide-content">
+        <h2>{{ onboarding.title }}</h2>
+        <img [src]="onboarding.image" [alt]="onboarding.title">
+        <p>{{ onboarding.description }}</p>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+  
+  <ion-button *ngIf="isLastSlide" (click)="goBack()" expand="full" class="button-home">
+    Ir a Home
+  </ion-button>
 </ion-content>

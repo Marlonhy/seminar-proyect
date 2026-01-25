@@ -1,0 +1,92 @@
+ion-content {
+  --padding-top: 0;
+  --padding-bottom: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+}
+
+swiper-container {
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+swiper-slide {
+  height: 100vh;
+  width: 100vw;
+}
+
+.slide-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  padding: 40px 20px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    word-wrap: break-word;
+    flex-shrink: 0;
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 0;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.9;
+    flex-shrink: 0;
+  }
+}
+
+ion-button {
+  margin: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+.button-home {
+  margin-top: auto;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 10;
+}
+
+swiper-slide {
+  opacity: 0;
+  animation: fadeIn 0.3s ease-in;
+  
+  &.swiper-slide-active {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

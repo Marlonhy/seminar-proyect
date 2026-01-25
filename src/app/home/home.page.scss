@@ -1,26 +1,25 @@
 .slide-content {
   text-align: center;
   padding: 10px;
-}
 
-.slide-content img {
-  width: 100%;
-  max-width: 300px;
-  height: auto;
-  border-radius: 10px;
-  margin: 10% 0;
-}
+  img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    border-radius: 10px;
+    margin: 10% 0;
+  }
 
-.slide-content h2, .slide-content h3 {
-  font-size: 25px;
-  margin: 0;
-}
+  h2, h3 {
+    font-size: 25px;
+    margin: 0;
+  }
 
-.slide-content p {
-  font-size: 15px;
-  text-align: justify;
+  p {
+    font-size: 15px;
+    text-align: justify;
+  }
 }
-
 
 .bg-card-test {
   background: #ffffff;
