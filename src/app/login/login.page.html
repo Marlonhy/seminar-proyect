@@ -53,5 +53,11 @@
     [disabled]="!loginForm.valid"
     type="submit"
     >Login</ion-button>
+    <ion-button
+    expand="block"
+    fill="clear"
+    (click)="goToRegister()"
+  >Crear una cuenta</ion-button>
   </form>
+  {{ errorMessage }}
 </ion-content>

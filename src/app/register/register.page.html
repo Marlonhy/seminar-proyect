@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <form
+      class="form-card"
+      [formGroup]="registerForm"
+      (ngSubmit)="submit()"
+    >
+      <h2 class="form-title">Crear cuenta</h2>
+
+      <ion-item>
+        <ion-input
+          label="Nombre"
+          labelPlacement="stacked"
+          formControlName="name"
+          placeholder="Ingresa tu nombre"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Apellido"
+          labelPlacement="stacked"
+          formControlName="lastname"
+          placeholder="Ingresa tu apellido"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          label="Email"
+          labelPlacement="stacked"
+          formControlName="email"
+          placeholder="Ingresa tu email"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input
+          type="password"
+          label="Contraseña"
+          labelPlacement="stacked"
+          formControlName="password"
+          placeholder="Ingresa tu contraseña"
+        ></ion-input>
+      </ion-item>
+
+      <div class="error-message" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+
+      <ion-button
+        expand="block"
+        type="submit"
+        [disabled]="registerForm.invalid"
+      >
+        Registrarse
+      </ion-button>
+
+      <ion-button
+        expand="block"
+        fill="clear"
+        (click)="goToLogin()"
+      >
+        Volver a login
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
