@@ -1,0 +1,26 @@
+.profile-default-image img {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+}
+
+.profile-default-image p {
+  color : white;
+  font-weight: bold;
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+  margin-top: auto;
+}
+
+.error-message {
+  max-width: 320px;
+  margin: 6px auto 12px auto;
+
+  padding: 4px 8px;
+
+  font-size: 0.8rem;
+  color: var(--ion-color-danger);
+
+  text-align: left;
+  border-left: 3px solid var(--ion-color-danger);
+}

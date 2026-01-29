@@ -15,16 +15,24 @@
     [style.background-color]="colorActual"
     [style.color]="textoActual"
     >
-    <swiper-slide *ngFor="let onboarding of onboardings">
+    <swiper-slide *ngFor="let onboarding of onboardings; let i = index">
       <div class="slide-content">
         <h2>{{ onboarding.title }}</h2>
-        <img [src]="onboarding.image" [alt]="onboarding.title">
+        <<div
+        class="background"
+        [style.background-image]="'url(' + onboarding.image + ')'"
+      ></div>
         <p>{{ onboarding.description }}</p>
+
+        <ion-button
+          *ngIf="isLastSlide && i === onboardings.length - 1"
+          (click)="goBack()"
+          expand="full"
+          class="button-home"
+        >
+          Ir a Home
+        </ion-button>
       </div>
     </swiper-slide>
   </swiper-container>
-  
-  <ion-button *ngIf="isLastSlide" (click)="goBack()" expand="full" class="button-home">
-    Ir a Home
-  </ion-button>
 </ion-content>
