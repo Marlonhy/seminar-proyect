@@ -1,13 +1,15 @@
-<ion-split-pane contendId="main-content">
-  <ion-menu contentId="main-content" side="end">
+<ion-split-pane contentId="main-content">
+  <ion-menu contentId="main-content" side="end" type="reveal">
     <ion-header>
       <ion-toolbar>
+        <ion-menu-toggle><ion-icon name="enter-outline"></ion-icon></ion-menu-toggle>
         <ion-title>Menu</ion-title>
       </ion-toolbar>
     </ion-header>
     <ion-content>
       <ion-list>
         <ion-item (click)="goToIntro()">Ver la intro</ion-item>
+        <ion-item (click)="logout()">Cerrar sesión</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>

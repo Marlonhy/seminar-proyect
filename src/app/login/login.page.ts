@@ -67,7 +67,7 @@ export class LoginPage implements OnInit {
       await this.storageService.set('isLoggedIn', true);
 
       this.errorMessage = '';
-      this.navCtrl.navigateRoot('/home');
+      this.navCtrl.navigateRoot('/menu/home');
     } catch (error) {
       this.errorMessage = String(error);
     }

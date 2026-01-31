@@ -82,7 +82,7 @@ export class IntroPage implements OnInit, AfterViewInit {
     console.log('Navegando de vuelta a Home');
     await this.storageService.set('introVisto', true);
     console.log('Intro marcada como vista');
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/menu/home");
   }
 
   async loadStorageData() {

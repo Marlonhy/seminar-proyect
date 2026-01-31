@@ -7,6 +7,11 @@ import { AppComponent } from './app/app.component';
 
 import { Storage } from '@ionic/storage-angular';
 
+import { addIcons } from 'ionicons';
+import * as ionicons from 'ionicons/icons';
+
+addIcons(ionicons);
+
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
