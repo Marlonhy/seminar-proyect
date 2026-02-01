@@ -24,7 +24,7 @@ export class MenuPage implements OnInit {
 
   async logout() {
     await this.navCtrl.navigateRoot('/login');
-    await this.storageService.remove("isLoggedIn");
+    await this.storageService.remove('isLoggedIn');
   }
 }
   

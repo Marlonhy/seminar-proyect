@@ -36,19 +36,19 @@ export class IntroPage implements OnInit, AfterViewInit {
 
   onboardings = [
     {
-      title: "Bienvenido a la App de Géneros Musicales",
-      image: "assets/onboarding/bienvenido.jpg",
-      description: "Explora y descubre diversos géneros musicales con nuestra aplicación interactiva."
+      title: 'Bienvenido a la App de Géneros Musicales',
+      image: 'assets/onboarding/bienvenido.jpg',
+      description: 'Explora y descubre diversos géneros musicales con nuestra aplicación interactiva.'
     },
     {
-      title: "Toda la Información que Necesitas",
-      image: "assets/onboarding/informacion.jpg",
-      description: "Encuentra descripciones detalladas, imágenes y más sobre tus géneros musicales favoritos."
+      title: 'Toda la Información que Necesitas',
+      image: 'assets/onboarding/informacion.jpg',
+      description: 'Encuentra descripciones detalladas, imágenes y más sobre tus géneros musicales favoritos.'
     },
     {
-      title: "",
-      image: "assets/onboarding/empezamos.jpg",
-      description: "¡Comienza tu aventura musical!"
+      title: '',
+      image: 'assets/onboarding/empezamos.jpg',
+      description: '¡Comienza tu aventura musical!'
     }
   ];
 
@@ -82,7 +82,7 @@ export class IntroPage implements OnInit, AfterViewInit {
     console.log('Navegando de vuelta a Home');
     await this.storageService.set('introVisto', true);
     console.log('Intro marcada como vista');
-    this.router.navigateByUrl("/menu/home");
+    this.router.navigateByUrl('/menu/home');
   }
 
   async loadStorageData() {

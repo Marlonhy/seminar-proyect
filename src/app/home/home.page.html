@@ -20,10 +20,24 @@
     [style.background-color]="colorActual"
     [style.color]="textoActual"
     >
-    <swiper-slide *ngFor="let album of albums">
+    <swiper-slide *ngFor="let album of albums" (click)="showSongsByAlbum(album.id)">
       <div class="slide-content">
         <img [src]="album.image"/>
         <p>{{ album.name }}</p>
+      </div>
+    </swiper-slide>
+  </swiper-container>
+  <swiper-container
+    pagination="true"
+    loop="true"
+    slides-per-view="1"
+    [style.background-color]="colorActual"
+    [style.color]="textoActual"
+    >
+    <swiper-slide *ngFor="let artist of artists" (click)="showSongsByArtists(artist.id)">
+      <div class="slide-content">
+        <img [src]="artist.image"/>
+        <p>{{ artist.name }}</p>
       </div>
     </swiper-slide>
   </swiper-container>
