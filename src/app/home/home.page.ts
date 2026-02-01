@@ -55,6 +55,7 @@ export class HomePage implements OnInit {
   albums: any;
   localArtists: any;
   artists: any;
+  song :any = null;
   constructor(private router: Router, private storageService: StorageService, private musicService: MusicService, private modalCtrl: ModalController) { }
 
   async ngOnInit() {
