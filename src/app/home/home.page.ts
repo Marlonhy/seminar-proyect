@@ -9,6 +9,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StorageService } from '../services/storage.service';
 import { Router } from '@angular/router';
+import { MusicService } from '../services/music.service';
 
 
 @Component({
@@ -48,11 +49,30 @@ export class HomePage implements OnInit {
       description: "EL trap es un subgénero del hip hop que se originó en el sur de Estados Unidos a principios de la década de 2000. Se caracteriza por sus ritmos pesados, líneas de bajo prominentes y letras que a menudo abordan temas relacionados con la vida en los barrios marginales, el tráfico de drogas y la lucha por el éxito. El trap ha ganado popularidad en todo el mundo y ha influido en otros géneros musicales, convirtiéndose en una parte importante de la cultura musical contemporánea."
     }
   ];
-  constructor(private router: Router, private storageService: StorageService) { }
+
+  tracks: any;
+  albums: any;
+  constructor(private router: Router, private storageService: StorageService, private musicService: MusicService) { }
 
   async ngOnInit() {
     await this.loadStorageData();
     this.simularCargaDatos();
+    this.loadTracks();
+    this.loadAlbums();
+  }
+
+  loadTracks() {
+    this.musicService.getTracks().then(tracks => {
+      this.tracks = tracks;
+      console.log('Tracks cargadas:', this.tracks);
+    });
+  }
+
+  loadAlbums() {
+    this.musicService.getAlbums().then(albums => {
+      this.albums = albums;
+      console.log('Albums cargados:', this.albums);
+    });
   }
 
   async goBack() {

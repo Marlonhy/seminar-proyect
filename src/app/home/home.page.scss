@@ -1,6 +1,6 @@
 .slide-content {
   text-align: center;
-  padding: 10px;
+  padding: 50px;
 
   img {
     width: 100%;
@@ -10,17 +10,9 @@
     margin: 10% 0;
   }
 
-  h2, h3 {
-    font-size: 25px;
-    margin: 0;
-  }
-
   p {
     font-size: 15px;
-    text-align: justify;
+    text-align: center;
+    top: auto;
   }
-}
-
-.bg-card-test {
-  background: #ffffff;
 }

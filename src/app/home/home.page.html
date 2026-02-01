@@ -20,38 +20,11 @@
     [style.background-color]="colorActual"
     [style.color]="textoActual"
     >
-    <swiper-slide *ngFor="let genre of genres">
+    <swiper-slide *ngFor="let album of albums">
       <div class="slide-content">
-        <h2>{{ genre.title }}</h2>
-        <img [src]="genre.image" [alt]="genre.title">
-        <p>{{ genre.description }}</p>
+        <img [src]="album.image"/>
+        <p>{{ album.name }}</p>
       </div>
     </swiper-slide>
   </swiper-container>
-  <ion-card class="bg-card-test">
-    <ion-card-header>
-      <ion-card-title>Card Title</ion-card-title>
-      <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-    </ion-card-header>
-
-    <ion-card-content>
-      Here's a small text description for the card content. Nothing more, nothing less.
-    </ion-card-content>
-  </ion-card>
-
-  <div>
-    <h3>Demo Ionic Storage</h3>
-    <div [style.background-color]="colorActual" [style.color]="textoActual">
-      <p>Tema actual: {{ colorActual === colorOscuro ? 'Oscuro' : 'Claro' }}</p>
-    </div>
-  </div>
-  <ion-button (click)="goBack()">
-    Ir a intro
-  </ion-button>
-
-  <div>
-    <p class="ion-text-center ion-text-uppercase">Texto centrado</p>
-    <p class="ion-text-left ion-text-lowercase">TEXTO A LA IZQUIERDA</p>
-    <p class="ion-text-right ion-text-capitalize">texto a la derecha</p>
-  </div>
 </ion-content>
