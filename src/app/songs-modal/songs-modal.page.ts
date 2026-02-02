@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { NavParams, IonicModule } from '@ionic/angular';
+import { NavParams, IonicModule, ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-songs-modal',
@@ -17,10 +17,15 @@ import { NavParams, IonicModule } from '@ionic/angular';
 export class SongsModalPage implements OnInit {
 
   songs: any;
-  constructor(private navParams: NavParams) { }
+  constructor(private navParams: NavParams, private ModalCtrl: ModalController) { }
 
   ngOnInit() {
     this.songs = this.navParams.data['songs'];
     console.log('Songs in modal:', this.songs);
+  }
+
+  async selectSong(song:any) {
+    console.log('Cancion seleccionada: ', song)
+    await this.ModalCtrl.dismiss(song)
   }
 }

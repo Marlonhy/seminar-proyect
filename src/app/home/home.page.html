@@ -42,8 +42,27 @@
     </swiper-slide>
   </swiper-container>
 </ion-content>
+
 <ion-footer>
-  <ion-text color="danger" *ngIf="song.name">
-    <h2>Aqui aparecera nuestra cancion</h2>
-  </ion-text>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-text-start">{{ formatTime(currentSong?.currentTime) || "0:00" }}</ion-col>
+      <ion-col class="ion-text-end">{{ formatTime(getRemainingTime()) || "0:00" }}</ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-progress-bar [value]="newTime || 0"></ion-progress-bar>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="1">
+        <ion-icon name="heart"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-text>{{ song.name || "" }}</ion-text>
+      </ion-col>
+      <ion-col size="1">
+        <ion-icon name="play" *ngIf="!song.playing" (click)="play()"></ion-icon>
+        <ion-icon name="pause" *ngIf="song.playing" (click)="pause()"></ion-icon>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>

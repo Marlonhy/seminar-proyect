@@ -55,7 +55,14 @@ export class HomePage implements OnInit {
   albums: any;
   localArtists: any;
   artists: any;
-  song :any = null;
+  song: any = {
+    name: '',
+    preview_url: '',
+    playing: false
+  };
+  currentSong: any = {};
+  newTime: any;
+
   constructor(private router: Router, private storageService: StorageService, private musicService: MusicService, private modalCtrl: ModalController) { }
 
   async ngOnInit() {
@@ -140,7 +147,13 @@ export class HomePage implements OnInit {
         songs: songs
       }
     });
-    await modal.present();
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        console.log('Cancion recibida ', result.data)
+        this.song = result.data
+      }
+    });
+    modal.present();
   }
 
   async showSongsByArtists(artistsId: string) {
@@ -153,6 +166,40 @@ export class HomePage implements OnInit {
         songs: songs
       }
     });
-    await modal.present();
+    modal.onDidDismiss().then((result) => {
+      if (result.data) {
+        console.log('Cancion recibida ', result.data)
+        this.song = result.data
+      }
+    });
+    modal.present();
+  }
+
+  play() {
+    this.currentSong = new Audio(this.song.preview_url);
+    this.currentSong.play();
+    this.currentSong.addEventListener("timeupdate", () => {
+    this.newTime = this.currentSong.currentTime / this.currentSong.duration;
+    });
+    this.song.playing = true;
+  }
+
+  pause() {
+    this.currentSong.pause();
+    this.song.playing = false;
+  }
+
+  formatTime(seconds: number) {
+    if (!seconds || isNaN(seconds)) return "0:00";
+    const minutes = Math.floor(seconds/60);
+    const remainingSeconds = Math.floor(seconds%60);
+    return `${minutes}:${remainingSeconds.toString().padStart(2,'0')}`;
+  }
+
+  getRemainingTime() {
+    if (!this.currentSong?.duration || !this.currentSong?.currentTime) {
+      return 0;
+    }
+    return this.currentSong.duration - this.currentSong.currentTime;
   }
 }
