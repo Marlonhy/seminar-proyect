@@ -49,4 +49,29 @@ export class StorageService {
     await this.ready();
     return this._storage?.length();
   }
+
+  async getFavorites(): Promise<any[]> {
+    return (await this.get('favorites')) || [];
+  }
+
+  async addFavorite(song: any): Promise<void> {
+      const favorites = await this.getFavorites();
+      const exists = favorites.find(item => item.id === song.id);
+
+      if (!exists) {
+          favorites.push(song);
+          await this.set('favorites', favorites);
+      }
+  }
+
+  async removeFavorite(songId: string): Promise<void> {
+      const favorites = await this.getFavorites();
+      const updated = favorites.filter(song => song.id !== songId);
+      await this.set('favorites', updated);
+  }
+
+  async isFavorite(songId: string): Promise<boolean> {
+      const favorites = await this.getFavorites();
+      return favorites.some(song => song.id === songId);
+  }
 }

@@ -32,6 +32,7 @@ export class HomePage implements OnInit {
   colorOscuro = 'var(--tema-oscuro)';
   colorActual = this.colorOscuro;
   textoActual = this.colorClaro;
+  modeTheme = true
 
   genres = [
     {
@@ -62,11 +63,13 @@ export class HomePage implements OnInit {
   };
   currentSong: any = {};
   newTime: any;
+  favorites: any[] = [];
 
   constructor(private router: Router, private storageService: StorageService, private musicService: MusicService, private modalCtrl: ModalController) { }
 
   async ngOnInit() {
     await this.loadStorageData();
+    await this.loadFavorites();
     this.simularCargaDatos();
     this.loadTracks();
     this.loadAlbums();
@@ -95,6 +98,48 @@ export class HomePage implements OnInit {
     });
   }
 
+  async loadFavorites(): Promise<void> {
+    const storedFavorites = await this.storageService.get('favorites');
+    this.favorites = storedFavorites || [];
+  }
+
+  isFavorite(song: any): boolean {
+    return this.favorites.some(fav => fav.id === song.id);
+  }
+
+  async toggleFavorite(song: any): Promise<void> {
+    const index = this.favorites.findIndex(fav => fav.id === song.id);
+
+    if (index === -1) {
+      this.favorites.push({
+        id: song.id,
+        name: song.name,
+        preview_url: song.preview_url
+      });
+    } else {
+      this.favorites.splice(index, 1);
+    }
+
+    await this.storageService.set('favorites', this.favorites);
+  }
+
+  async openFavorites(): Promise<void> {
+    const modal = await this.modalCtrl.create({
+      component: SongsModalPage,
+      componentProps: {
+        songs: this.favorites
+      }
+    });
+
+    modal.onDidDismiss().then(result => {
+      if (result.data) {
+        this.song = result.data;
+      }
+    });
+
+    await modal.present();
+  }
+
   async goBack() {
     console.log('Navegando a intro');
     this.router.navigateByUrl('/intro');
@@ -107,6 +152,7 @@ export class HomePage implements OnInit {
 
     await this.storageService.set('theme', this.colorActual);
     console.log('Tema guardado:', this.colorActual);
+    this.modeTheme = !this.modeTheme;
   }
 
   async loadStorageData() {

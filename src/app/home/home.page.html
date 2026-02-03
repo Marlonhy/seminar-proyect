@@ -3,6 +3,13 @@
     <ion-title>
       Home
     </ion-title>
+    <ion-buttons slot="end" class="button">
+      <ion-icon name="heart" (click)="openFavorites()"></ion-icon>
+    </ion-buttons>
+    <ion-buttons slot="end" class="button">
+      <ion-icon name="sunny-outline" *ngIf="!modeTheme" (click)="cambiarTema()"></ion-icon>
+      <ion-icon name="moon-outline" *ngIf="modeTheme" (click)="cambiarTema()"></ion-icon>
+    </ion-buttons>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,9 +17,6 @@
 </ion-header>
 
 <ion-content>
-  <ion-button (click)="cambiarTema()" expand="full">
-    Cambiar Tema Claro/Oscuro
-  </ion-button>
   <swiper-container
     pagination="true"
     loop="true"
@@ -43,7 +47,9 @@
   </swiper-container>
 </ion-content>
 
-<ion-footer>
+<ion-footer
+    [style.background-color]="colorActual"
+    [style.color]="textoActual">
   <ion-grid>
     <ion-row>
       <ion-col class="ion-text-start">{{ formatTime(currentSong?.currentTime) || "0:00" }}</ion-col>
@@ -54,7 +60,10 @@
   <ion-grid>
     <ion-row>
       <ion-col size="1">
-        <ion-icon name="heart"></ion-icon>
+        <ion-icon
+          [name]="isFavorite(song) ? 'heart' : 'heart-outline'"
+          (click)="toggleFavorite(song)">
+        </ion-icon>
       </ion-col>
       <ion-col size="10">
         <ion-text>{{ song.name || "" }}</ion-text>

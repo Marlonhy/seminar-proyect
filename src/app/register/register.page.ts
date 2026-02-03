@@ -16,7 +16,7 @@ import {
   IonButton
 } from '@ionic/angular/standalone';
 import { NavController } from '@ionic/angular';
-import { AuthService } from '../services/auth.serivce';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',

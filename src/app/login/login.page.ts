@@ -9,7 +9,7 @@ import {
   FormControl
 } from '@angular/forms';
 import { IonicModule, NavController } from '@ionic/angular';
-import { AuthService } from '../services/auth.serivce';
+import { AuthService } from '../services/auth.service';
 import { StorageService } from '../services/storage.service';
 
 @Component({
