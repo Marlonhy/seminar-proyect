@@ -7,8 +7,8 @@
       <ion-icon name="heart" (click)="openFavorites()"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end" class="button">
-      <ion-icon name="sunny-outline" *ngIf="!modeTheme" (click)="cambiarTema()"></ion-icon>
-      <ion-icon name="moon-outline" *ngIf="modeTheme" (click)="cambiarTema()"></ion-icon>
+      <ion-icon name="sunny-outline" *ngIf="!modeTheme" (click)="mode()"></ion-icon>
+      <ion-icon name="moon-outline" *ngIf="modeTheme" (click)="mode()"></ion-icon>
     </ion-buttons>
     <ion-buttons slot="end">
       <ion-menu-button></ion-menu-button>
@@ -17,6 +17,7 @@
 </ion-header>
 
 <ion-content>
+  <div class="content-wrapper">
   <swiper-container
     pagination="true"
     loop="true"
@@ -45,6 +46,7 @@
       </div>
     </swiper-slide>
   </swiper-container>
+  </div>
 </ion-content>
 
 <ion-footer

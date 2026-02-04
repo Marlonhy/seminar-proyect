@@ -65,7 +65,7 @@ export class HomePage implements OnInit {
   newTime: any;
   favorites: any[] = [];
 
-  constructor(private router: Router, private storageService: StorageService, private musicService: MusicService, private modalCtrl: ModalController) { }
+  constructor(private storageService: StorageService, private musicService: MusicService, private modalCtrl: ModalController) { }
 
   async ngOnInit() {
     await this.loadStorageData();
@@ -140,12 +140,7 @@ export class HomePage implements OnInit {
     await modal.present();
   }
 
-  async goBack() {
-    console.log('Navegando a intro');
-    this.router.navigateByUrl('/intro');
-  }
-
-  async cambiarTema(){
+  async mode(){
     this.colorActual = this.colorActual === this.colorOscuro ? this.colorClaro : this.colorOscuro;
 
     this.textoActual = this.textoActual === this.colorClaro ? this.colorOscuro : this.colorClaro;
